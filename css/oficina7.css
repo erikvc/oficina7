@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	background-color: #ffffff;
+	margin: 0;
+	padding: 0;
+	color: #999999;
+	font-size: 14px;
+	font-family: 'Archivo Narrow', sans-serif;
+}
+body{
+	margin-bottom: 10px;
+}
+header{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	padding: 10px;
+	text-align: center;
+	background-color: #ffffff;
+	border-bottom: #cccccc solid 1px;
+}
+section{
+	padding: 20px;
+	min-height: 100%;
+	margin-bottom: 40px;
+	margin-top: 70px;
+}
+.enviarEmail{
+	padding: 10px;
+	box-sizing: border-box;
+	background-color: #999999;
+	font-family: 'Open Sans Condensed', sans-serif; 
+	font-size: 7px;
+	max-width: 120px;
+	text-align: center;
+	margin: 0 auto;
+	text-decoration: none;
+	text-shadow: none;
+	color: #ffffff;
+	font-size: 14px;
+	border-radius: 3px;
+}
+footer{
+	position: fixed;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+	text-align: center;
+	background-color: #ffffff;
+}
+footer ul{
+	width: 100%;
+}
+footer ul li{
+	display: inline;
+	border: #222222 solid 1px;
+	width: 100%;
+}
