@@ -8,46 +8,94 @@
 <!--CHAMA JS-->
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/jquery.mobile-1.4.5.min.js"></script>
+<script src="https://use.fontawesome.com/ed794f4e83.js"></script>
 <script src="cordova.js"></script>
+ 
+   
 
 <!--GOOGLE FONTS-->
-<link href="https://fonts.googleapis.com/css?family=Archivo+Narrow" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+<!--FONT AWESOME--
+<link href="css/font-awesome.css" rel="stylesheet">
+
+
 
 <!--CHAMA CSS-->
 
 <link rel="stylesheet" href="css/oficina7.css" />
-<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/themes/oficina7Theme.css" />
+<link rel="stylesheet" href="css/themes/my-custom-theme.css" />
+<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" />
 
 </head>
 
 <body>
-	<header>
-		<div style="max-width: 200px; margin: 0 auto;"><img style="width: 100%;" src="images/logo.png" alt=""/></div> 
+	<header data-role="header">
+		<div style="max-width: 1024px; text-align: center; margin: 0 auto; background-color: #000000;"><img style="max-width: 400px; margin: 0 auto; background-color: transparent;" src="images/logo.png" alt=""/></div> 
     </header>
-	<section>
-		<form>
-			<h4 style="margin-bottom: 20px;">
+	<div style="max-width: 100%; margin: 0 auto; margin-bottom: 50px; font-family: 'Open Sans', sans-serif;" data-role="content">
+		<div id="carregando" class="carregando">
+			<div id="carregando2" class="carregando2">	
+				<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><br>
+				<strong id="textAlert">Enviando...</strong>
+			</div>
+		</div>
+		<form id="formOrcamento">
+			<div style="margin-bottom: 20px;">
 				Envie-nos a maior quantidade possivel de informação sobre seu aparelho para que possamos detectar as falhas que estão ocorrendo. Após a verificação e constatação do problema pela equipe técnica, enviaremos via email todos os dados orçamentários. Qualquer dúvida clique no botão contato e nos envie mensagem.
-			</h4>
+			</div>
 			<h2>Dados Pessoais</h2>
-			<input placeholder="nome..." type="text">
-			<input placeholder="telefone..." type="text">
-			<input placeholder="email..." type="text">
+			<input name="nome" placeholder="nome..." type="text">
+			<input name="telefone" placeholder="telefone..." type="text">
+			<input name="email" placeholder="email..." type="text">
 			<h2>Dados do Aparelho</h2>
-			<input placeholder="marca..." type="text">
-			<input placeholder="modelo..." type="text">
-			<textarea placeholder="descrição do problema..."></textarea>
-			<button style="font-family: 'Open Sans Condensed', sans-serif; font-size: 16px;">enviar</button>
+			<input name="marca" placeholder="marca..." type="text">
+			<input name="modelo" placeholder="modelo..." type="text">
+			<textarea name="descricao" placeholder="descrição do problema..."></textarea><br>
+			<a id="orcamento" href="#" style="font-family: 'Open Sans Condensed', sans-serif; font-size: 16px;">enviar</a>
+			
 		</form>
-	</section>
-	<footer>
-		<div  data-role="navbar">
-			<ul >
+		
+		
+		<script>
+			$(document).ready(function(){
+				$("#carregando").hide();
+				$("#orcamento").click(function(e){
+					e.preventDefault;
+					var formData = $("#formOrcamento").serialize();
+					$.ajax({
+						type: "POST",
+						dataType: "text",
+						crossDomain: true,
+						data: formData,
+						url: "http://www.optmedia.net/phonegap/oficina7/orcamento.php",
+						beforeSend: function(){
+							$("#carregando").show();
+						},
+						success: function(data){
+							$("#carregando").hide();
+							alert(data);
+						},
+						error: function(){
+							alert("Erro")
+						}
+					})
+				})
+			})
+		</script>
+		
+		
+	</div>
+	<div class="footer">
+		<div data-role="navbar">
+			<ul>
 				<li><a data-ajax="false" style="font-family: 'Open Sans Condensed', sans-serif; font-size: 16px;" href="index.html">Serviços</a></li>
 				<li><a data-ajax="false" style="font-family: 'Open Sans Condensed', sans-serif; font-size: 16px;" href="orcamento.html">Orçamento</a></li>
 				<li><a data-ajax="false" style="font-family: 'Open Sans Condensed', sans-serif; font-size: 16px;" href="contato.html">Contato</a></li>
 			</ul>
 		</div><!-- /navbar -->
-	</footer>
+	</div>
 </body>
 </html>
